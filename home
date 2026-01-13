@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kydra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://open.spotify.com/track/1xi6dDkL3JSbVxu39dpcGV?si=b4f1e68f90af483c" target="_blank" rel="noopener">
+    <img src="cover.jpg" alt="Kydra cover art">
+  </a>
+</body>
+</html>
