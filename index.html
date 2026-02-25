@@ -33,25 +33,24 @@
 
     .logo {
       position: fixed;
-      top: 24px;
+      top: 25%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       z-index: 1;
       white-space: nowrap;
     }
 
     .logo img {
-      height: 28px;
-      width: auto;
+      height: auto;
       display: block;
       opacity: 0.85;
     }
 
     .links {
       position: fixed;
-      bottom: 24px;
+      bottom: 25%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, 50%);
       display: flex;
       gap: 22px;
       z-index: 1;
@@ -84,6 +83,20 @@
       }
     }
   </style>
+
+  <script>
+    window.addEventListener('load', function () {
+      function syncLogo() {
+        const linksEl = document.querySelector('.links');
+        const logoImg = document.querySelector('.logo img');
+        if (!linksEl || !logoImg) return;
+        const width = linksEl.offsetWidth;
+        logoImg.style.width = width + 'px';
+      }
+      syncLogo();
+      window.addEventListener('resize', syncLogo);
+    });
+  </script>
 </head>
 <body>
 
