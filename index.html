@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <link rel="icon" href="/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="/favicon.png">
-
+  <link rel="apple-touch-icon" href="/favicon.png">
   <meta charset="UTF-8" />
   <title>Kydra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,18 +22,50 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
     }
 
-    .cover {
+    .logo {
+      position: absolute;
+      top: var(--edge-gap);
+      left: 50%;
+      transform: translateX(-50%);
+      width: var(--icon-row-width);
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.85;
+    }
+
+    .video-wrapper {
       max-width: 70vw;
       max-height: 70vh;
-      object-fit: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 24px;
+    }
+
+    .video-wrapper video {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      display: block;
     }
 
     .links {
       display: flex;
       gap: 22px;
+      position: absolute;
+      bottom: var(--edge-gap);
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .links a {
@@ -45,41 +76,67 @@
       justify-content: center;
     }
 
-   .links img {
-  width: 100%;
-  height: 100%;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-  filter: brightness(0) saturate(100%) invert(1);
-}
+    .links img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+      filter: brightness(0) saturate(100%) invert(1);
+    }
 
     .links img:hover {
       opacity: 1;
     }
+
     @media (max-width: 600px) {
-  .links a {
-    width: 20px;
-    height: 20px;
-  }
-}
+      .links a {
+        width: 20px;
+        height: 20px;
+      }
+    }
   </style>
+
+  <script>
+    window.addEventListener('load', function () {
+      function syncLayout() {
+        const linksEl = document.querySelector('.links');
+        const logoEl = document.querySelector('.logo');
+        if (!linksEl || !logoEl) return;
+        const width = linksEl.offsetWidth;
+        const rect = linksEl.getBoundingClientRect();
+        const gap = window.innerHeight - rect.bottom;
+        document.documentElement.style.setProperty('--icon-row-width', width + 'px');
+        document.documentElement.style.setProperty('--edge-gap', gap + 'px');
+      }
+      syncLayout();
+      window.addEventListener('resize', syncLayout);
+    });
+  </script>
 </head>
 <body>
-
   <div class="container">
-    <img src="cover.jpg" alt="Kydra cover art" class="cover">
+
+    <div class="logo">
+      <img src="logo.png" alt="kydra.net">
+    </div>
+
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="loop.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <div class="links">
-      <a href="https://tidal.com/track/485404713/u" target="_blank" rel="noopener">
+      <a href="https://tidal.com/artist/68679755" target="_blank" rel="noopener">
         <img src="icons/tidal.svg" alt="Tidal">
       </a>
-      <a href="https://kydranet.bandcamp.com/track/pull-yourself-together" target="_blank" rel="noopener">
+      <a href="https://kydranet.bandcamp.com/" target="_blank" rel="noopener">
         <img src="icons/bandcamp.svg" alt="Bandcamp">
       </a>
-      <a href="http://itunes.apple.com/album/id/1864761447" target="_blank" rel="noopener">
+      <a href="https://music.apple.com/ca/artist/kydra-net/1864227160" target="_blank" rel="noopener">
         <img src="icons/apple-music.svg" alt="Apple Music">
       </a>
-      <a href="https://open.spotify.com/artist/0DhsrFmN15AlqbGtT46HFS?si=09yjc6JtQaWUpVwYpFeXzA" target="_blank" rel="noopener">
+      <a href="https://open.spotify.com/artist/0DhsrFmN15AlqbGtT46HFS?si=F9mfXKCVRmihX0uE4niVSw" target="_blank" rel="noopener">
         <img src="icons/spotify.svg" alt="Spotify">
       </a>
       <a href="https://www.instagram.com/charakaile/" target="_blank" rel="noopener">
@@ -92,7 +149,7 @@
         <img src="icons/email.svg" alt="Email">
       </a>
     </div>
-  </div>
 
+  </div>
 </body>
 </html>
